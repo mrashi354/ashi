@@ -1,0 +1,49 @@
+Improve the About page of BRDM Public School website (Kaithal, Haryana) 
+while keeping the existing design language, colors, and layout style consistent 
+with the rest of the site.
+
+Add the following new sections to the About page, in this order:
+
+1. School History/Journey
+   - A short timeline (founding year to present) showing key milestones
+   - Use simple cards or a vertical timeline layout
+
+2. Principal's Message (expand existing section)
+   - Add a full 3-4 paragraph message from the Principal
+   - Include a placeholder circular photo, name, and designation
+
+3. Vision & Mission (expand)
+   - Separate "Vision" and "Mission" into two distinct cards with more detail
+     (3-4 sentences each) instead of one-liners
+
+4. Core Values section
+   - 4-6 value cards (e.g. Discipline, Creativity, Respect, Excellence, 
+     Innovation, Community) each with an icon and 1-line description
+
+5. Infrastructure & Facilities section
+   - Grid of facility cards: Library, Science Labs, Computer Lab, 
+     Smart Classrooms, Playground, Transport, Safety & Security (CCTV)
+   - Each card: icon + title + 1-line description
+
+6. Affiliation & Recognition
+   - A section showing board affiliation (placeholder: "Affiliated to 
+     [Board Name], Affiliation No: XXXXX") and any recognitions/awards
+
+7. Parent Testimonials
+   - 3 testimonial cards with placeholder parent names, photos (initials avatar), 
+     and short quotes about their experience with the school
+
+8. Call-to-Action banner
+   - A closing section with heading like "Give Your Child the Best Start" 
+     and a button linking to the /admissions page
+
+Technical requirements:
+- Keep it fully mobile responsive
+- Reuse existing color scheme, fonts, and card/button styles already used 
+  on the Home page
+- Add proper meta title and meta description for SEO on the About page
+- Add alt text to all images/icons for accessibility and SEO
+- Keep smooth scroll animations consistent with rest of the site if any 
+  are already used
+
+Do not change the existing header, footer, or navigation structure.

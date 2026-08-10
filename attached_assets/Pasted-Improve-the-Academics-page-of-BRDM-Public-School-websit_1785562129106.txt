@@ -1,0 +1,56 @@
+Improve the Academics page of BRDM Public School website (Kaithal, Haryana) 
+while keeping the existing design language, colors, fonts, and card styles 
+consistent with the rest of the site (same style as currently used in the 
+"Discover the BRDM Difference" section).
+
+Keep the existing "Discover the BRDM Difference" 6-card section as it is, 
+but add the following new sections BELOW it on the Academics page:
+
+1. Class-wise Structure section
+   - Show the academic levels offered: Play Group, Nursery/KG, 
+     Primary (Class 1-5), Middle School (Class 6-8) [adjust based on actual 
+     classes the school offers]
+   - Display as horizontal cards/steps, each with a short description of 
+     focus area for that stage
+
+2. Board Affiliation & Recognition
+   - A section stating the board affiliation (placeholder: 
+     "Affiliated to [Board Name], Affiliation No: XXXXX, School Code: XXXXX")
+   - Mention medium of instruction (English/Hindi)
+
+3. Subjects & Curriculum section
+   - Grid/tabs showing subjects by stage:
+     - Primary: English, Hindi, Mathematics, EVS, Computer, Art, GK
+     - Middle: English, Hindi, Mathematics, Science, Social Science, 
+       Sanskrit/Third Language, Computer Science
+   - Use tab or accordion UI if possible, matching existing site style
+
+4. Teaching Methodology section
+   - 3-4 cards explaining approach: Smart Classrooms with digital boards, 
+     Activity-Based Learning, Regular Assessments & Feedback, 
+     Individual Attention (low student-teacher ratio)
+
+5. Beyond the Classroom
+   - Highlight co-curricular integration: Sports periods, Yoga & Physical 
+     Education, Art & Craft, Music, Computer Lab sessions, Library periods
+
+6. Assessment & Evaluation
+   - Short section explaining evaluation pattern: Periodic Tests, 
+     Half-Yearly & Annual Exams, Project-based Assessment, 
+     Report Card frequency
+
+7. Call-to-Action banner
+   - Heading like "Curious About Our Curriculum?" with two buttons: 
+     "Download Prospectus" (placeholder link) and "Enroll Now" 
+     (linking to /admissions)
+
+Technical requirements:
+- Fully mobile responsive
+- Reuse existing color scheme, fonts, icons style, and card/button design 
+  already used elsewhere on the site
+- Add proper meta title and meta description for SEO specific to Academics page
+- Add alt text to all icons/images
+- Keep animations/transitions consistent with rest of the site
+
+Do not change the existing header, footer, navigation, or the current 
+"Discover the BRDM Difference" section — only add new sections after it.

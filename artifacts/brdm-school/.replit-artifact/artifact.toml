@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "BRDM Public School"
+version = "1.0.0"
+id = "artifacts/brdm-school"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20057
+
+[services.development]
+run = "pnpm --filter @workspace/brdm-school run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/brdm-school", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/brdm-school/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20057"
+BASE_PATH = "/"

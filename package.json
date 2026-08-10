@@ -1,0 +1,29 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "artifacts/*",
+    "lib/*",
+    "lib/integrations/*",
+    "scripts"
+  ],
+  "scripts": {
+    "start": "npm run start --workspace=artifacts/api-server",
+    "build": "npm run typecheck && npm run build --workspaces --if-present",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "npm run typecheck:libs && npm run typecheck --workspaces --if-present",
+    "dev": "npm run dev:api & npm run dev:web",
+    "dev:web": "npm run dev --workspace=artifacts/brdm-school",
+    "dev:api": "PORT=3001 npm run dev --workspace=artifacts/api-server"
+  },
+  "dependencies": {
+    "@google/genai": "^2.16.0",
+    "@replit/connectors-sdk": "^0.4.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.5",
+    "typescript": "~5.9.3"
+  }
+}

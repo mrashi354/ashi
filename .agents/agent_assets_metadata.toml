@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "M4o3FJ0hNgs767DszyPm4"
+uri = "file://attached_assets/logo_transparent.png"
+type = "image"
+title = "Logo - White Background Removed"

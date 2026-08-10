@@ -1,0 +1,56 @@
+Improve the Gallery page of BRDM Public School website (Kaithal, Haryana) 
+while keeping the existing design language, colors, fonts, and filter tab 
+style (All / Sports / Facilities / Events) consistent with current design.
+
+Make the following improvements:
+
+1. Add a Lightbox/Modal view
+   - When a user clicks any gallery image, it should open in a full-screen 
+     lightbox/popup with a dark overlay
+   - Include Next/Previous arrow navigation to browse through images 
+     without closing the popup
+   - Include a close (X) button and allow closing via clicking outside 
+     the image or pressing Escape key
+
+2. Expand categories
+   - Add more filter tabs alongside existing ones: 
+     All | Sports | Facilities | Events | Classrooms | Celebrations | 
+     Field Trips | Annual Function
+   - Make tabs horizontally scrollable on mobile if they don't fit
+
+3. Add more gallery items
+   - Increase total gallery items to at least 15-20 (placeholder images 
+     for now), spread across all categories
+   - Each item should have: image, title/caption, category tag, and 
+     optional date
+
+4. Improve grid layout
+   - Use a responsive masonry-style or auto-fit grid layout so images 
+     of different aspect ratios look natural (not stretched/cropped awkwardly)
+   - On hover, show a subtle overlay with the image title and category
+
+5. Add lazy loading
+   - Images should lazy-load as user scrolls, to keep the page fast
+
+6. Add "Load More" button
+   - Initially show 8-9 images per category, with a "Load More" button 
+     to reveal additional images instead of loading everything at once
+
+7. Add a small Video Gallery section (optional, below photo grid)
+   - A row of 2-3 YouTube embed placeholders for school event videos 
+     with titles like "Annual Day 2025 Highlights"
+
+8. Add Social CTA
+   - A small section/banner at the bottom: "Follow us for more moments" 
+     with Instagram and Facebook icon links (placeholder URLs)
+
+Technical requirements:
+- Fully mobile responsive, touch-friendly lightbox navigation (swipe support 
+  if possible)
+- Add descriptive alt text to every image for SEO and accessibility
+- Add proper meta title and meta description for the Gallery page
+- Keep loading smooth with proper image optimization/placeholders
+- Do not change the header, footer, or navigation structure
+
+Keep all existing images/content already present on the page — only add 
+new sections and functionality on top of it.

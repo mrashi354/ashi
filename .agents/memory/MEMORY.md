@@ -1,0 +1,2 @@
+- [Imported pnpm workspaces](pnpm-workspace-setup.md) — restore dependencies from the committed lockfile before diagnosing artifact workflow startup failures.
+- [replit.md audit rule](replit-md-audit.md) — user requires replit.md updated after every website change: add to Recent Changes Log, update folder audit if files added/removed, update env vars table if secrets change.

@@ -1,0 +1,36 @@
+Improve the Contact Us page of my school website (BRDM Public School, Kaithal, Haryana) with the following changes:
+
+1. GOOGLE MAP EMBED
+   - Replace the "Open in Google Maps" link with an actual embedded Google Maps iframe showing the school location (Shora Kothi, Jind Rd, Kaithal, Haryana 136027).
+   - Make it responsive and full-width on mobile.
+
+2. CONTACT FORM IMPROVEMENTS
+   - Add proper client-side validation (name required, valid phone/email format, message not empty).
+   - Show a success message/toast after form submission and clear the fields.
+   - Show inline error messages under each field if validation fails.
+   - Add a loading spinner on the "Send Message" button while submitting.
+   - Connect the form to send an email or store submissions in a database (or at least a working backend endpoint), instead of doing nothing on submit.
+
+3. WHATSAPP QUICK CONTACT
+   - Add a floating WhatsApp button (bottom-right corner) linking to wa.me/917404500023 with a pre-filled message like "Hi, I want to know more about admissions."
+
+4. CLICK-TO-CALL AND CLICK-TO-EMAIL
+   - Make sure the phone number and email are clickable on both desktop and mobile (tel: and mailto: links, which I see are already there — just confirm they work correctly on mobile).
+
+5. TRUST ELEMENTS
+   - Add a small "Quick FAQs" accordion section below the form (e.g., "What documents are needed for admission?", "What are the school timings?", "Do you provide transport facility?").
+   - Add a "Response time" badge near the form like "We usually reply within a few hours" for reassurance.
+
+6. VISUAL/UX IMPROVEMENTS
+   - Add subtle animations (fade-in) when the page loads.
+   - Improve mobile responsiveness of the contact info cards (Address, Phone, Email, Office Hours) — make them stack nicely and have icons.
+   - Add a "Get Directions" button next to the map that opens Google Maps navigation directly.
+
+7. ACCESSIBILITY & SEO
+   - Add proper alt text, aria-labels for icons and buttons.
+   - Add meta title and description for the contact page for better SEO (e.g., "Contact BRDM Public School Kaithal | Admissions & Enquiries").
+
+8. SPAM PROTECTION
+   - Add a simple honeypot field or basic captcha to prevent spam form submissions.
+
+Keep the existing color scheme, fonts, and layout style — just enhance functionality and polish the design without breaking the current theme.

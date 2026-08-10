@@ -1,0 +1,6 @@
+{
+  "name": "BRDM Public School",
+  "description": "Official website and campus portal for BRDM Public School",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
