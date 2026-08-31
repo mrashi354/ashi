@@ -128,8 +128,7 @@ export function Contact() {
     setServerError(null);
 
     try {
-      const base = (import.meta.env.BASE_URL ?? '').replace(/\/$/, '');
-      const response = await fetch(`${base}/api/contact`, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

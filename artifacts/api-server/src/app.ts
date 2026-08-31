@@ -30,7 +30,22 @@ app.use(
     },
   }),
 );
-app.use(cors());
+
+// Configure CORS based on environment
+const corsOrigin = process.env.CORS_ORIGIN?.split(',').map(o => o.trim()) || [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://0.0.0.0:3000',
+];
+
+app.use(
+  cors({
+    origin: corsOrigin,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
