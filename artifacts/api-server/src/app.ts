@@ -32,12 +32,22 @@ app.use(
   }),
 );
 
-// Configure CORS based on environment
-const corsOrigin = process.env.CORS_ORIGIN?.split(',').map(o => o.trim()) || [
+// Configure CORS based on environment. Allow configured origins plus any
+// Vercel deployment host (e.g. *.vercel.app preview/custom/alias domains).
+const allowedOrigins = process.env.CORS_ORIGIN?.split(',').map(o => o.trim()).filter(Boolean) || [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://0.0.0.0:3000',
 ];
+
+const corsOrigin = (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+  if (!origin) {
+    callback(null, true);
+    return;
+  }
+  const allows = allowedOrigins.includes(origin) || origin.endsWith('.vercel.app');
+  callback(null, allows);
+};
 
 app.use(
   cors({
