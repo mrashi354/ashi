@@ -8,9 +8,7 @@ import './index.css';
 // Initialize API base URL from environment variable
 // In development: http://localhost:3001 (from .env.local)
 // In production: https://your-api.onrender.com (from .env.production)
-const apiUrl = import.meta.env.VITE_API_URL;
-if (apiUrl) {
-  setBaseUrl(apiUrl);
-}
+const apiUrl = String(import.meta.env.VITE_API_URL || '');
+setBaseUrl(apiUrl);
 
 createRoot(document.getElementById('root')!).render(<App />);
