@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ClipboardCheck, FileText, UserCheck, Calendar } from 'lucide-react';
 import { useState } from 'react';
+import { apiUrl } from '@/lib/api';
 
 const steps = [
   { id: "01", title: "Submit Enquiry", description: "Fill out our simple online form or visit our campus to express your interest.", icon: FileText },
@@ -35,7 +36,7 @@ export function Admissions() {
     setStatus(null);
 
     try {
-      const response = await fetch('/api/admissions', {
+      const response = await fetch(apiUrl('/api/admissions'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

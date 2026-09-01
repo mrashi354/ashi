@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mic, Send, RotateCcw, User, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { apiUrl } from '@/lib/api';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -195,8 +196,7 @@ export function ChatWidget() {
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
     try {
-      const base = import.meta.env.BASE_URL?.replace(/\/$/, '') ?? '';
-      const res = await fetch(`${base}/api/ai/chat`, {
+      const res = await fetch(apiUrl('/api/ai/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: msgs }),

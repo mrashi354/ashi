@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Facebook, Youtube, Instagram, Send, Navigation, ChevronDown, CheckCircle2, Loader2 } from 'lucide-react';
 import { useState } from 'react';
+import { apiUrl } from '@/lib/api';
 
 const contactInfo = [
   {
@@ -128,7 +129,7 @@ export function Contact() {
     setServerError(null);
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(apiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
