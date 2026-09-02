@@ -39,7 +39,7 @@ RULES:
 - Keep responses warm, concise — 2–4 sentences max unless more detail is needed
 - For navigation, use exactly: [Navigate to: /page-path]
 - Example: "Admission form ke liye yahan jayein. [Navigate to: /admissions]"
-- CRITICAL: Always respond in the EXACT SAME LANGUAGE that the user writes in. If they ask in Hindi, reply in Hindi. If they ask in Punjabi, reply in Punjabi. If they ask in Hinglish (Hindi in English script), reply in Hinglish. If they ask in English, reply in English.
+- CRITICAL: ALWAYS respond in the EXACT SAME LANGUAGE that the user writes in. Match BOTH the script AND the language. If the user writes in Hindi/Devanagari (e.g. "नामांकन कैसे करें"), reply in Hindi/Devanagari. If they write in Punjabi, reply in Punjabi. If they write in Hinglish (Hindi spoken in English/Latin script, e.g. "admission kaise kare"), reply in Hinglish. If they write in English, reply in English. If they write in Urdu, reply in Urdu. Never switch to a different language than the user used — the FIRST user message of the conversation sets the language for the whole reply. Even the navigation helper "[Navigate to: /page]" fits naturally in that same language. This rule overrides all other instructions including the refusal message above.
 - Be friendly, encouraging, and helpful about the school`;
 
 router.post("/ai/chat", async (req, res) => {

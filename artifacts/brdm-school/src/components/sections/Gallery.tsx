@@ -11,42 +11,6 @@ interface Photo {
 }
 
 const photos: Photo[] = [
-  /* Sports */
-  { src: '/sports-recreation.png',       label: 'Sports Day 2025',             category: 'Sports',          date: 'Mar 2025' },
-  { src: 'https://placehold.co/600x400/1e3a5f/ffffff?text=Cricket+Match',       label: 'Inter-House Cricket Match',   category: 'Sports',          date: 'Feb 2025' },
-  { src: 'https://placehold.co/600x450/1e3a5f/ffffff?text=Athletics+Track',     label: 'Athletics Practice Session',  category: 'Sports',          date: 'Jan 2025' },
-
-  /* Facilities */
-  { src: '/modern-library.png',          label: 'School Library',              category: 'Facilities',      date: '2024' },
-  { src: 'https://placehold.co/600x400/2d5a27/ffffff?text=Science+Lab',         label: 'Science Laboratory',          category: 'Facilities',      date: '2024' },
-  { src: 'https://placehold.co/600x380/2d5a27/ffffff?text=Computer+Lab',        label: 'Computer Lab',                category: 'Facilities',      date: '2024' },
-  { src: 'https://placehold.co/600x420/2d5a27/ffffff?text=Smart+Classroom',     label: 'Smart Classroom with Board',  category: 'Facilities',      date: '2024' },
-
-  /* Events */
-  { src: '/principal.png',               label: 'Principal\'s Address',        category: 'Events',          date: 'Apr 2025' },
-  { src: '/earth-day-event.png',         label: 'Earth Day Celebration',        category: 'Events',          date: 'Apr 2025' },
-  { src: '/admission-banner.png',        label: 'Admissions Open 2026–27',      category: 'Events',          date: 'May 2025' },
-  { src: 'https://placehold.co/600x400/7c3aed/ffffff?text=Republic+Day',        label: 'Republic Day Parade',         category: 'Events',          date: 'Jan 2025' },
-
-  /* Classrooms */
-  { src: 'https://placehold.co/600x420/0f4c81/ffffff?text=Class+in+Session',    label: 'Class in Session',            category: 'Classrooms',      date: '2025' },
-  { src: 'https://placehold.co/600x380/0f4c81/ffffff?text=Group+Activity',      label: 'Group Activity — Class 5',    category: 'Classrooms',      date: '2025' },
-  { src: 'https://placehold.co/600x450/0f4c81/ffffff?text=Art+Class',           label: 'Art & Craft Class',           category: 'Classrooms',      date: 'Mar 2025' },
-
-  /* Celebrations */
-  { src: 'https://placehold.co/600x400/c2410c/ffffff?text=Diwali+Celebration',  label: 'Diwali Celebration 2024',     category: 'Celebrations',    date: 'Nov 2024' },
-  { src: 'https://placehold.co/600x420/c2410c/ffffff?text=Holi+Event',          label: 'Holi Colours Day',            category: 'Celebrations',    date: 'Mar 2025' },
-  { src: 'https://placehold.co/600x380/c2410c/ffffff?text=Children%27s+Day',    label: "Children's Day 2024",         category: 'Celebrations',    date: 'Nov 2024' },
-
-  /* Field Trips */
-  { src: 'https://placehold.co/600x420/065f46/ffffff?text=Museum+Visit',        label: 'History Museum Field Trip',   category: 'Field Trips',     date: 'Dec 2024' },
-  { src: 'https://placehold.co/600x400/065f46/ffffff?text=Nature+Walk',         label: 'Nature Walk — Class 3',       category: 'Field Trips',     date: 'Oct 2024' },
-
-  /* Annual Function */
-  { src: 'https://placehold.co/600x420/7e1d77/ffffff?text=Annual+Day+2025',     label: 'Annual Day 2025 — Main Stage', category: 'Annual Function', date: 'Jan 2025' },
-  { src: 'https://placehold.co/600x400/7e1d77/ffffff?text=Dance+Performance',   label: 'Cultural Dance Performance',  category: 'Annual Function', date: 'Jan 2025' },
-  { src: 'https://placehold.co/600x450/7e1d77/ffffff?text=Prize+Distribution',  label: 'Prize Distribution Ceremony', category: 'Annual Function', date: 'Jan 2025' },
-
   /* Campus Life — real school photos */
   { src: '/gallery/photo-01.png',   label: 'Campus Moment 1',  category: 'Campus Life' },
   { src: '/gallery/photo-02.jpg',   label: 'Campus Moment 2',  category: 'Campus Life' },
@@ -65,7 +29,7 @@ const photos: Photo[] = [
   { src: '/gallery/photo-15.webp',  label: 'Campus Moment 15',  category: 'Campus Life' },
 ];
 
-const CATEGORIES = ['All', 'Sports', 'Facilities', 'Events', 'Classrooms', 'Celebrations', 'Field Trips', 'Annual Function', 'Campus Life'];
+const CATEGORIES = ['All', 'Campus Life'];
 const PAGE_SIZE = 9;
 
 /* ─── Lightbox ───────────────────────────────────────────────────────────── */

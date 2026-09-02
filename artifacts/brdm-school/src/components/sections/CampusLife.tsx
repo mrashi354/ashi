@@ -107,17 +107,17 @@ export function CampusLife() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
           <GalleryCard
-            src="/sports-recreation.png"
-            alt="Students in a circle formation during sports activity"
-            label="Sports & Recreation"
+            src="/gallery/photo-02.jpg"
+            alt="BRDM Public School campus moment"
+            label="Campus Moment"
             className="md:col-span-8 h-64 sm:h-80 md:h-[360px]"
             i={0}
             objectPos="object-center"
           />
           <GalleryCard
-            src="/modern-library.png"
-            alt="Modern school library"
-            label="Modern Library"
+            src="/gallery/photo-04.jpg"
+            alt="BRDM Public School campus moment"
+            label="Campus Moment"
             className="md:col-span-4 h-64 sm:h-80 md:h-[360px]"
             i={1}
           />
@@ -131,8 +131,8 @@ export function CampusLife() {
             className="md:col-span-12 rounded-3xl overflow-hidden relative group bg-[#0a1a4a]"
           >
             <motion.img
-              src="/admission-banner.png"
-              alt="BRDM Public School admission banner"
+              src="/gallery/photo-01.png"
+              alt="BRDM Public School campus moment"
               className="w-full h-auto block object-contain"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.5 }}
@@ -146,7 +146,7 @@ export function CampusLife() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                Admissions Open
+                Campus Moment
               </motion.span>
             </motion.div>
           </motion.div>
