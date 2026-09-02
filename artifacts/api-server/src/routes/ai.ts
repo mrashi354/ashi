@@ -60,7 +60,7 @@ router.post("/ai/chat", async (req, res) => {
     const ai = getAi();
 
     const stream = await ai.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "openai/gpt-oss-20b",
       stream: true,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
