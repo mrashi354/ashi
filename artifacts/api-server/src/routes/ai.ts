@@ -60,7 +60,7 @@ router.post("/ai/chat", async (req, res) => {
     const ai = getAi();
 
     const stream = await ai.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "llama3-8b-8192",
       stream: true,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
