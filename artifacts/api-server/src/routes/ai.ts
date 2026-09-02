@@ -1,19 +1,15 @@
 import { Router, type IRouter } from "express";
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import OpenAI from "openai";
 import { logger } from "../lib/logger";
 
 const router: IRouter = Router();
 
-let _ai: GoogleGenAI | null = null;
-function getAi(): GoogleGenAI {
+let _ai: OpenAI | null = null;
+function getAi(): OpenAI {
   if (!_ai) {
-    _ai = new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
-        }
-      }
+    _ai = new OpenAI({
+      apiKey: process.env.GROQ_API_KEY,
+      baseURL: "https://api.groq.com/openai/v1",
     });
   }
   return _ai;
@@ -62,32 +58,23 @@ router.post("/ai/chat", async (req, res) => {
 
   try {
     const ai = getAi();
-    
-    // Convert to Gemini format
-    // Gemini chat expects history as { role: 'user' | 'model', parts: [{ text: '...' }] }
-    // We can also just use generateContentStream with system instruction and history
-    const history = messages.slice(0, -1).map(m => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }]
-    }));
-    
-    const latestMessage = messages[messages.length - 1].content;
-    
-    const stream = await ai.models.generateContentStream({
-      model: "gemini-3.6-flash",
-      contents: [
-        ...history,
-        { role: 'user', parts: [{ text: latestMessage }] }
+
+    const stream = await ai.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
+      stream: true,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages.map((m) => ({
+          role: m.role === "assistant" ? ("assistant" as const) : ("user" as const),
+          content: m.content,
+        })),
       ],
-      config: {
-        systemInstruction: SYSTEM_PROMPT,
-      }
     });
 
     for await (const chunk of stream) {
-      const c = chunk as GenerateContentResponse;
-      if (c.text) {
-        res.write(`data: ${JSON.stringify({ content: c.text })}\n\n`);
+      const text = chunk.choices?.[0]?.delta?.content;
+      if (text) {
+        res.write(`data: ${JSON.stringify({ content: text })}\n\n`);
       }
     }
 
@@ -97,8 +84,8 @@ router.post("/ai/chat", async (req, res) => {
     logger.error(
       {
         err: err instanceof Error ? err.message : String(err),
-        provider: "gemini",
-        model: "gemini-3.6-flash",
+        provider: "groq",
+        model: "llama-3.3-70b-versatile",
       },
       "AI chat request failed",
     );
