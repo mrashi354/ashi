@@ -131,7 +131,7 @@ export function CampusLife() {
             className="md:col-span-12 rounded-3xl overflow-hidden relative group bg-[#0a1a4a]"
           >
             <motion.img
-              src="/gallery/photo-01.png"
+              src="/gallery/photo-03.jpg"
               alt="BRDM Public School campus moment"
               className="w-full h-auto block object-contain"
               whileHover={{ scale: 1.02 }}
