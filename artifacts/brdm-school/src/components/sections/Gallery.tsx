@@ -46,9 +46,26 @@ const photos: Photo[] = [
   { src: 'https://placehold.co/600x420/7e1d77/ffffff?text=Annual+Day+2025',     label: 'Annual Day 2025 — Main Stage', category: 'Annual Function', date: 'Jan 2025' },
   { src: 'https://placehold.co/600x400/7e1d77/ffffff?text=Dance+Performance',   label: 'Cultural Dance Performance',  category: 'Annual Function', date: 'Jan 2025' },
   { src: 'https://placehold.co/600x450/7e1d77/ffffff?text=Prize+Distribution',  label: 'Prize Distribution Ceremony', category: 'Annual Function', date: 'Jan 2025' },
+
+  /* Campus Life — real school photos */
+  { src: '/gallery/photo-01.png',   label: 'Campus Moment 1',  category: 'Campus Life' },
+  { src: '/gallery/photo-02.jpg',   label: 'Campus Moment 2',  category: 'Campus Life' },
+  { src: '/gallery/photo-03.jpg',   label: 'Campus Moment 3',  category: 'Campus Life' },
+  { src: '/gallery/photo-04.jpg',   label: 'Campus Moment 4',  category: 'Campus Life' },
+  { src: '/gallery/photo-05.jpg',   label: 'Campus Moment 5',  category: 'Campus Life' },
+  { src: '/gallery/photo-06.jpg',   label: 'Campus Moment 6',  category: 'Campus Life' },
+  { src: '/gallery/photo-07.jpg',   label: 'Campus Moment 7',  category: 'Campus Life' },
+  { src: '/gallery/photo-08.jpg',   label: 'Campus Moment 8',  category: 'Campus Life' },
+  { src: '/gallery/photo-09.jpg',   label: 'Campus Moment 9',  category: 'Campus Life' },
+  { src: '/gallery/photo-10.jpg',   label: 'Campus Moment 10',  category: 'Campus Life' },
+  { src: '/gallery/photo-11.jpg',   label: 'Campus Moment 11',  category: 'Campus Life' },
+  { src: '/gallery/photo-12.jpg',   label: 'Campus Moment 12',  category: 'Campus Life' },
+  { src: '/gallery/photo-13.webp',  label: 'Campus Moment 13',  category: 'Campus Life' },
+  { src: '/gallery/photo-14.webp',  label: 'Campus Moment 14',  category: 'Campus Life' },
+  { src: '/gallery/photo-15.webp',  label: 'Campus Moment 15',  category: 'Campus Life' },
 ];
 
-const CATEGORIES = ['All', 'Sports', 'Facilities', 'Events', 'Classrooms', 'Celebrations', 'Field Trips', 'Annual Function'];
+const CATEGORIES = ['All', 'Sports', 'Facilities', 'Events', 'Classrooms', 'Celebrations', 'Field Trips', 'Annual Function', 'Campus Life'];
 const PAGE_SIZE = 9;
 
 /* ─── Lightbox ───────────────────────────────────────────────────────────── */
