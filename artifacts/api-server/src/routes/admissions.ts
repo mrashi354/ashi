@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const router: IRouter = Router();
 
-const RECIPIENT_EMAIL = "mrashi354@gmail.com";
+const RECIPIENT_EMAIL = "akstudioa97@gmail.com";
 
 function escapeHtml(value: string) {
   return value

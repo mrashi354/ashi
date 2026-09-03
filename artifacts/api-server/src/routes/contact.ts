@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const router: IRouter = Router();
 
-const RECIPIENT_EMAIL = "mrashi354@gmail.com";
+const RECIPIENT_EMAIL = "akstudioa97@gmail.com";
 
 function escapeHtml(value: string) {
   return value
@@ -34,7 +34,6 @@ router.post("/contact", async (req, res) => {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    console.log("[DEBUG] RESEND_API_KEY:", apiKey ? `SET(len=${apiKey.length})` : "UNDEFINED/EMPTY");
     if (!apiKey) {
       req.log.error("RESEND_API_KEY is not configured");
       res.status(503).json({ message: "Email service is not configured yet." });
