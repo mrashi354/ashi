@@ -34,6 +34,7 @@ router.post("/contact", async (req, res) => {
     }
 
     const apiKey = process.env.RESEND_API_KEY;
+    console.log("[DEBUG] RESEND_API_KEY:", apiKey ? `SET(len=${apiKey.length})` : "UNDEFINED/EMPTY");
     if (!apiKey) {
       req.log.error("RESEND_API_KEY is not configured");
       res.status(503).json({ message: "Email service is not configured yet." });
