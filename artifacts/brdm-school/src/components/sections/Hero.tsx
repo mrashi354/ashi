@@ -1,18 +1,7 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'wouter';
 
-const words1 = ['Preparing', 'Your', 'Child'];
-const words2 = ['for', 'better', 'Future...'];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
-};
-const wordVariants: Variants = {
-  hidden: { opacity: 0, y: 40, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: 'easeOut' } },
-};
 export function Hero() {
   return (
     <section className="relative h-[100dvh] min-h-[560px] w-full flex items-center justify-center overflow-hidden">
@@ -65,44 +54,6 @@ export function Hero() {
           />
           Admissions open for 2026-2027
         </motion.div>
-
-        {/* Headline — word by word */}
-        <motion.h1
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-4 sm:mb-6 drop-shadow-lg"
-        >
-          <span className="flex flex-wrap justify-center gap-x-4 gap-y-1 mb-1">
-            {words1.map((word) => (
-              <motion.span key={word} variants={wordVariants} className="inline-block">
-                {word}
-              </motion.span>
-            ))}
-          </span>
-          <span className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-            {words2.map((word, i) => (
-              <motion.span
-                key={word}
-                variants={wordVariants}
-                className={`inline-block ${i === 0 ? '' : 'text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary'}`}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </span>
-        </motion.h1>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1, ease: 'easeOut' }}
-          className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-xs sm:max-w-lg md:max-w-2xl font-medium leading-relaxed mb-7 sm:mb-10 drop-shadow-md"
-        >
-          A proud neighborhood school in Kaithal, Haryana where families trust their children's futures.
-          Step into a bright environment full of hope, possibility, and academic excellence.
-        </motion.p>
 
         {/* Buttons */}
         <motion.div
