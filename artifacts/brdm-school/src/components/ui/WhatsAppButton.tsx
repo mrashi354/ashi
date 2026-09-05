@@ -18,7 +18,7 @@ export function WhatsAppButton() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.5, type: 'spring', stiffness: 260, damping: 20 }}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.95 }}
     >
       {/* WhatsApp SVG icon */}

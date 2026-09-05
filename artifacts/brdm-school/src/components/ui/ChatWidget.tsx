@@ -470,7 +470,7 @@ export function ChatWidget() {
       {/* Toggle button */}
       <motion.button
         onClick={() => setOpen((o) => !o)}
-        whileHover={{ scale: 1.08 }}
+        whileHover={{ scale: 1.12 }}
         whileTap={{ scale: 0.94 }}
         className="w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-2xl flex items-center justify-center relative"
         aria-label="Open chat"
