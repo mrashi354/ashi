@@ -1,0 +1,20 @@
+name: Keep backend warm
+
+# Render free tier sleeps after ~15 min of inactivity, which causes 30-60s
+# cold starts on the next request. Pinging the health endpoint every 10 min
+# keeps the instance warm so chat + admission forms respond fast.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    name: Ping API server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hit health endpoint
+        run: |
+          curl -sS -o /dev/null -w "status=%{http_code} time=%{time_total}s\n" \
+            https://ashi-say4.onrender.com/api/healthz
+        timeout-minutes: 2

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, RotateCcw, Bot, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { apiUrl } from '@/lib/api';
+import { streamChat, warmUpServer, type ChatMessage } from '@/lib/chat';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -35,7 +35,9 @@ export function ChatBoard() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
+  const [serverWaking, setServerWaking] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
+  const wakingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,59 +45,63 @@ export function ChatBoard() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  useEffect(() => {
+    warmUpServer();
+    return () => {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+    };
+  }, []);
+
   async function streamResponse(msgs: Message[]) {
     setStreaming(true);
+    setServerWaking(false);
     const controller = new AbortController();
     abortRef.current = controller;
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
+    wakingTimerRef.current = setTimeout(() => setServerWaking(true), 3000);
+    controller.signal.addEventListener(
+      'abort',
+      () => {
+        if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+      },
+      { once: true },
+    );
+
     try {
-      const res = await fetch(apiUrl('/api/ai/chat'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: msgs }),
+      let full = '';
+      await streamChat(msgs, {
+        timeoutMs: 75000,
+        onChunk: (text) => {
+          full = text;
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = { role: 'assistant', content: full };
+            return updated;
+          });
+        },
+        onFirstByte: () => {
+          if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+          setServerWaking(false);
+        },
         signal: controller.signal,
       });
-
-      const reader = res.body!.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-      let full = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() ?? '';
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const payload = JSON.parse(line.slice(6)) as { content?: string; error?: string };
-          if (payload.error) {
-            throw new Error(payload.error);
-          }
-          if (payload.content) {
-            full += payload.content;
-            setMessages((prev) => {
-              const updated = [...prev];
-              updated[updated.length - 1] = { role: 'assistant', content: full };
-              return updated;
-            });
-          }
-        }
-      }
-    } catch (err: unknown) {
+    } catch (err) {
       if ((err as Error).name !== 'AbortError') {
         setMessages((prev) => {
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: 'assistant',
-            content: 'Maafi chahta hoon, kuch masla aa gaya. Dobara koshish karein.',
+            content: (err as { timedOut?: boolean }).timedOut
+              ? 'Server thoda dheere chal raha hai. Thodi der baad dobara message bhej kar dekhein.'
+              : 'Maafi chahta hoon, kuch masla aa gaya. Dobara koshish karein.',
           };
           return updated;
         });
       }
     } finally {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+      setServerWaking(false);
       setStreaming(false);
     }
   }
@@ -238,6 +244,11 @@ export function ChatBoard() {
                       )}
                     >
                       {msg.content || (isLast && streaming ? <TypingDots /> : null)}
+                      {isLast && streaming && serverWaking && !msg.content && (
+                        <p className="mt-1 text-[11px] text-muted-foreground">
+                          Server ko jaga raha hai, bas ek second… kabhi kabhi pehla reply thoda slow hota hai.
+                        </p>
+                      )}
                     </div>
                     {msg.role === 'user' && (
                       <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center shrink-0 mb-0.5">

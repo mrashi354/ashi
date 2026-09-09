@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { ClipboardCheck, FileText, UserCheck, Calendar } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { apiUrl } from '@/lib/api';
+import { warmUpServer } from '@/lib/chat';
 
 const steps = [
   { id: "01", title: "Submit Enquiry", description: "Fill out our simple online form or visit our campus to express your interest.", icon: FileText },
@@ -23,7 +24,17 @@ export function Admissions() {
     grade: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverWaking, setServerWaking] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const wakingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    // Wake the backend early so form submission isn't slowed by a cold start.
+    warmUpServer();
+    return () => {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+    };
+  }, []);
 
   function updateField(field: keyof typeof form, value: string) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -33,14 +44,23 @@ export function Admissions() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
+    setServerWaking(false);
     setStatus(null);
+
+    // After ~5s, tell the user the server may be booting up.
+    wakingTimerRef.current = setTimeout(() => setServerWaking(true), 5000);
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 45000);
 
     try {
       const response = await fetch(apiUrl('/api/admissions'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
       const data = (await response.json()) as { message?: string };
 
       if (!response.ok) {
@@ -50,11 +70,17 @@ export function Admissions() {
       setForm({ parentName: '', childName: '', phone: '', grade: '' });
       setStatus({ type: 'success', message: 'Thank you! Your enquiry has been sent.' });
     } catch (error) {
+      clearTimeout(timeout);
+      const timedOut = error instanceof Error && error.name === 'AbortError';
       setStatus({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Something went wrong. Please try again.',
+        message: timedOut
+          ? 'Server response lene me zyada time lag raha hai. Thodi der baad dobara try karein.'
+          : error instanceof Error ? error.message : 'Something went wrong. Please try again.',
       });
     } finally {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+      setServerWaking(false);
       setIsSubmitting(false);
     }
   }
@@ -220,6 +246,11 @@ export function Admissions() {
                   >
                     {isSubmitting ? 'Sending Request...' : 'Submit Request'}
                   </motion.button>
+                  {isSubmitting && serverWaking && (
+                    <p className="mt-3 text-sm text-muted-foreground" role="status">
+                      Server ko jaga raha hai, bas thodi der… pehla request kabhi kabhi slow hota hai.
+                    </p>
+                  )}
                 </motion.div>
                 {status && (
                   <p

@@ -2,12 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mic, Send, RotateCcw, User, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { apiUrl } from '@/lib/api';
-
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-}
+import { streamChat, warmUpServer, type ChatMessage } from '@/lib/chat';
 
 interface SpeechRecognitionResultLike {
   isFinal: boolean;
@@ -71,14 +66,16 @@ function TypingDots() {
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
+  const [serverWaking, setServerWaking] = useState(false);
   const [listening, setListening] = useState(false);
   const [voiceSupported, setVoiceSupported] = useState(false);
   const [voiceError, setVoiceError] = useState('');
   const [speakingMessage, setSpeakingMessage] = useState<number | 'auto' | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const wakingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null);
   const voiceTranscriptRef = useRef('');
   const speakNextResponseRef = useRef(false);
@@ -96,8 +93,11 @@ export function ChatWidget() {
 
   useEffect(() => {
     setVoiceSupported(Boolean(getSpeechRecognition()));
+    // Wake the backend early so the first reply is fast (kernel cold start).
+    warmUpServer();
 
     return () => {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
       recognitionRef.current?.abort();
       window.speechSynthesis?.cancel();
     };
@@ -105,6 +105,7 @@ export function ChatWidget() {
 
   useEffect(() => {
     if (open) {
+      warmUpServer();
       setTimeout(() => inputRef.current?.focus(), 300);
     }
   }, [open]);
@@ -189,67 +190,65 @@ export function ChatWidget() {
     }
   }
 
-  async function streamResponse(msgs: Message[]) {
+  async function streamResponse(msgs: ChatMessage[]) {
     setStreaming(true);
+    setServerWaking(false);
     const controller = new AbortController();
     abortRef.current = controller;
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
+    // After ~3s with no first byte, tell the user the server is booting.
+    wakingTimerRef.current = setTimeout(() => setServerWaking(true), 3000);
+
+    // Stop the follow-up warm-up hints once a reply starts arriving.
+    abortRef.current.signal.addEventListener(
+      'abort',
+      () => {
+        if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+      },
+      { once: true },
+    );
+
     try {
-      const res = await fetch(apiUrl('/api/ai/chat'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: msgs }),
+      let full = '';
+      await streamChat(msgs, {
+        timeoutMs: 75000,
+        onChunk: (text) => {
+          full = text;
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = { role: 'assistant', content: full };
+            return updated;
+          });
+        },
+        onFirstByte: () => {
+          if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
+          setServerWaking(false);
+        },
         signal: controller.signal,
       });
 
-      const reader = res.body!.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-      let full = '';
-
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() ?? '';
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const payload = JSON.parse(line.slice(6)) as {
-            content?: string;
-            done?: boolean;
-            error?: string;
-          };
-          if (payload.error) {
-            throw new Error(payload.error);
-          }
-          if (payload.content) {
-            full += payload.content;
-            setMessages((prev) => {
-              const updated = [...prev];
-              updated[updated.length - 1] = { role: 'assistant', content: full };
-              return updated;
-            });
-          }
-        }
-      }
       if (full.trim() && speakNextResponseRef.current) {
         speakText(full);
       }
-    } catch (err: unknown) {
+    } catch (err) {
       if ((err as Error).name !== 'AbortError') {
         setMessages((prev) => {
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: 'assistant',
-            content: 'Maafi chahti hoon, AI service se response nahi aa paaya. Thodi der baad dobara koshish karein.',
+            content:
+              (err as { timedOut?: boolean }).timedOut
+                ? 'Server thoda dheere chal raha hai. Thodi der baad dobara message bhej kar dekhein.'
+                : 'Maafi chahti hoon, AI service se response nahi aa paaya. Thodi der baad dobara koshish karein.',
           };
           return updated;
         });
       }
     } finally {
+      if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
       speakNextResponseRef.current = false;
+      setServerWaking(false);
       setStreaming(false);
     }
   }
@@ -257,7 +256,7 @@ export function ChatWidget() {
   async function handleSend(text?: string, speakResponse = true) {
     const q = (text ?? input).trim();
     if (!q || streaming) return;
-    const userMsg: Message = { role: 'user', content: q };
+    const userMsg: ChatMessage = { role: 'user', content: q };
     const newMsgs = [...messages.filter((m) => m.content), userMsg];
     speakNextResponseRef.current = speakResponse;
     setMessages(newMsgs);
@@ -268,16 +267,19 @@ export function ChatWidget() {
 
   function handleReset() {
     abortRef.current?.abort();
+    if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
     recognitionRef.current?.abort();
     stopSpeaking();
     setMessages([]);
     setListening(false);
     setStreaming(false);
+    setServerWaking(false);
     setInput('');
   }
 
   function handleClose() {
     abortRef.current?.abort();
+    if (wakingTimerRef.current) clearTimeout(wakingTimerRef.current);
     recognitionRef.current?.abort();
     setListening(false);
     setOpen(false);
@@ -390,6 +392,11 @@ export function ChatWidget() {
                       )}
                     >
                        <div>{msg.content || (isLast && streaming ? <TypingDots /> : null)}</div>
+                       {isLast && streaming && serverWaking && !msg.content && (
+                         <p className="mt-1 text-[10px] text-muted-foreground">
+                           Server ko jaga raha hai, bas ek second…
+                         </p>
+                       )}
                        {msg.role === 'assistant' && msg.content && !streaming && (
                          <button
                            onClick={() =>

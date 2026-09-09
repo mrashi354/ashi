@@ -33,11 +33,14 @@ app.use(
 );
 
 // Configure CORS based on environment. Allow configured origins plus any
-// Vercel deployment host (e.g. *.vercel.app preview/custom/alias domains).
+// Vercel deployment host (e.g. *.vercel.app preview/custom/alias domains)
+// and the production custom domain.
 const allowedOrigins = process.env.CORS_ORIGIN?.split(',').map(o => o.trim()).filter(Boolean) || [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://0.0.0.0:3000',
+  'https://brdmpublicschool.in',
+  'https://www.brdmpublicschool.in',
 ];
 
 const corsOrigin = (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
@@ -45,7 +48,11 @@ const corsOrigin = (origin: string | undefined, callback: (err: Error | null, al
     callback(null, true);
     return;
   }
-  const allows = allowedOrigins.includes(origin) || origin.endsWith('.vercel.app');
+  const allows =
+    allowedOrigins.includes(origin) ||
+    origin.endsWith('.vercel.app') ||
+    // Allow any subpath of the custom domain (covers future subdomains).
+    /^https:\/\/([\w-]+\.)?brdmpublicschool\.in$/.test(origin);
   callback(null, allows);
 };
 
