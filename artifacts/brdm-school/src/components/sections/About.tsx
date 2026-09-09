@@ -171,8 +171,12 @@ export function About() {
                 className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative z-10 w-full max-h-[340px] sm:max-h-[420px] lg:max-h-none lg:aspect-[4/5]"
               >
                 <motion.img
-                  src="/principal.png"
-                  alt="Principal addressing students and parents at BRDM Public School"
+                  src="/principal.webp"
+                  alt="Principal of BRDM Public School Kaithal — leadership in education"
+                  width="341"
+                  height="318"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top"
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.5 }}

@@ -81,6 +81,6 @@ vercel
 
 After deployment:
 1. Go to Vercel Project Settings → Domains
-2. Add your custom domain (e.g., brdmpublicschool.com)
+2. Add your custom domain (e.g., brdmpublicschool.in)
 3. Follow DNS instructions
 4. Update `VITE_API_URL` CORS settings on Render backend with your Vercel domain

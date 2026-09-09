@@ -38,6 +38,10 @@ function GalleryCard({ src, alt, label, className = '', i, objectPos = 'object-c
       <motion.img
         src={src}
         alt={alt}
+        width="960"
+        height="421"
+        loading="lazy"
+        decoding="async"
         className={`w-full h-full object-cover ${objectPos}`}
         whileHover={{ scale: 1.07 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -91,33 +95,34 @@ export function CampusLife() {
             </motion.p>
           </div>
           <motion.a
-            href="#"
+            href="/gallery"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
+            aria-label="View the full photo gallery of BRDM Public School Kaithal"
             className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-full hover:bg-muted transition-colors font-medium text-foreground whitespace-nowrap self-start md:self-auto"
           >
-            View Full Gallery
+            Explore Our Photo Gallery
           </motion.a>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
           <GalleryCard
-            src="/gallery/photo-02.jpg"
-            alt="BRDM Public School campus moment"
-            label="Campus Moment"
+            src="/gallery/photo-02.webp"
+            alt="Students at BRDM Public School Kaithal enjoying campus life and learning activities"
+            label="Students Learning Together"
             className="md:col-span-8 h-64 sm:h-80 md:h-[360px]"
             i={0}
             objectPos="object-center"
           />
           <GalleryCard
             src="/gallery/photo-04.jpg"
-            alt="BRDM Public School campus moment"
-            label="Campus Moment"
+            alt="BRDM Public School Kaithal classroom learning environment with students and teachers"
+            label="Classroom Activities"
             className="md:col-span-4 h-64 sm:h-80 md:h-[360px]"
             i={1}
           />
@@ -131,8 +136,12 @@ export function CampusLife() {
             className="md:col-span-12 rounded-3xl overflow-hidden relative group bg-[#0a1a4a]"
           >
             <motion.img
-              src="/gallery/photo-03.jpg"
-              alt="BRDM Public School campus moment"
+              src="/gallery/photo-03.webp"
+              alt="BRDM Public School Kaithal events and celebrations with students participating"
+              width="320"
+              height="140"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto block object-contain"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.5 }}
@@ -146,7 +155,7 @@ export function CampusLife() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                Campus Moment
+                Campus Celebrations
               </motion.span>
             </motion.div>
           </motion.div>

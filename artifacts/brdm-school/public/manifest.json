@@ -1,0 +1,32 @@
+{
+  "name": "BRDM Public School Kaithal, Haryana",
+  "short_name": "BRDM School",
+  "description": "BRDM Public School, Kaithal — top CBSE school in Haryana with modern infrastructure, expert faculty & holistic education.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf6ef",
+  "theme_color": "#dc5a1e",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

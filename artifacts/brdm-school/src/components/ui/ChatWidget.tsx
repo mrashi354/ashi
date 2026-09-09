@@ -302,7 +302,7 @@ export function ChatWidget() {
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-primary text-primary-foreground shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full overflow-hidden bg-white flex items-center justify-center p-0.5">
-                  <img src="/logo.png" alt="BRDM Logo" className="w-full h-full object-contain" />
+                  <img src="/logo.png" alt="BRDM Public School Kaithal logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold leading-tight">BRDM Assistant</p>
@@ -343,7 +343,7 @@ export function ChatWidget() {
                     className="flex flex-col items-center justify-center h-full pt-4 pb-2 text-center"
                   >
                     <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center p-1 mb-3 shadow">
-                      <img src="/logo.png" alt="BRDM Logo" className="w-full h-full object-contain" />
+<img src="/logo.png" alt="BRDM Public School Kaithal logo" className="w-full h-full object-contain" />
                     </div>
                     <p className="font-semibold text-foreground mb-1 text-sm">Namaste! 👋</p>
                     <p className="text-xs text-muted-foreground mb-4 max-w-[220px]">
@@ -378,7 +378,7 @@ export function ChatWidget() {
                   >
                     {msg.role === 'assistant' && (
                       <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mb-0.5">
-                        <img src="/ai-bot.jpg" alt="AI Bot" className="w-full h-full object-cover" />
+                        <img src="/ai-bot.jpg" alt="BRDM AI assistant chatbot" className="w-full h-full object-cover" />
                       </div>
                     )}
                      <div
@@ -495,7 +495,7 @@ export function ChatWidget() {
               transition={{ duration: 0.15 }}
               className="w-full h-full rounded-full overflow-hidden"
             >
-              <img src="/ai-bot.jpg" alt="AI Bot" className="w-full h-full object-cover rounded-full" />
+              <img src="/ai-bot.jpg" alt="BRDM AI assistant chatbot" className="w-full h-full object-cover rounded-full" />
             </motion.span>
           )}
         </AnimatePresence>

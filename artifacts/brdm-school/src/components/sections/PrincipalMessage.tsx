@@ -20,7 +20,7 @@ export function PrincipalMessage() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5]">
                 <img
                   src="/logo.png"
-                  alt="Principal BRDM Public School"
+                  alt="BRDM Public School Kaithal — official school logo"
                   className="w-full h-full object-contain bg-secondary/10 p-12"
                 />
               </div>

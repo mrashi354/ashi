@@ -175,14 +175,14 @@ export function Admissions() {
                   className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
                 >
                   <div className="space-y-1.5">
-                    <label className="text-sm font-semibold">Parent's Name</label>
-                    <input type="text" placeholder="John Doe" required value={form.parentName}
+                    <label htmlFor="admission-parent" className="text-sm font-semibold">Parent's Name</label>
+                    <input id="admission-parent" type="text" placeholder="John Doe" required value={form.parentName}
                       onChange={(event) => updateField('parentName', event.target.value)}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-sm sm:text-base" />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-sm font-semibold">Child's Name</label>
-                    <input type="text" placeholder="Jane Doe" required value={form.childName}
+                    <label htmlFor="admission-child" className="text-sm font-semibold">Child's Name</label>
+                    <input id="admission-child" type="text" placeholder="Jane Doe" required value={form.childName}
                       onChange={(event) => updateField('childName', event.target.value)}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-sm sm:text-base" />
                   </div>
@@ -192,16 +192,16 @@ export function Admissions() {
                   { i: 1, label: "Phone Number", type: "tel", placeholder: "+91 XXXXX XXXXX" },
                 ].map(({ i, label, type, placeholder }) => (
                   <motion.div key={label} custom={i} variants={formFieldVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-1.5">
-                    <label className="text-sm font-semibold">{label}</label>
-                    <input type={type} placeholder={placeholder} required value={form.phone}
+                    <label htmlFor="admission-phone" className="text-sm font-semibold">{label}</label>
+                    <input id="admission-phone" type={type} placeholder={placeholder} required value={form.phone}
                       onChange={(event) => updateField('phone', event.target.value)}
                       className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-sm sm:text-base" />
                   </motion.div>
                 ))}
 
                 <motion.div custom={2} variants={formFieldVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-1.5">
-                  <label className="text-sm font-semibold">Grade Applying For</label>
-                  <select value={form.grade} required onChange={(event) => updateField('grade', event.target.value)}
+                  <label htmlFor="admission-grade" className="text-sm font-semibold">Grade Applying For</label>
+                  <select id="admission-grade" value={form.grade} required onChange={(event) => updateField('grade', event.target.value)}
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none text-sm sm:text-base">
                     <option value="" disabled>Select Grade</option>
                     {['Play Group', 'Kindergarten', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10'].map((g) => (

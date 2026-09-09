@@ -1,6 +1,29 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Star } from 'lucide-react';
+import { Link } from 'wouter';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { label: 'About Us',            href: '/about'      },
+    { label: "Principal's Message", href: '/principal'  },
+    { label: 'Our Faculty',         href: '/faculty'    },
+    { label: 'Academics',           href: '/academics'  },
+    { label: 'Academic Calendar',   href: '/calendar'   },
+    { label: 'News & Events',       href: '/news'       },
+    { label: 'Photo Gallery',       href: '/gallery'    },
+    { label: 'Admissions Open 2026', href: '/admissions' },
+    { label: 'Contact Us',          href: '/contact'    },
+  ];
+
+  const programs = [
+    { label: 'Play Group',       href: '/academics' },
+    { label: 'Primary School',   href: '/academics' },
+    { label: 'Middle School',    href: '/academics' },
+    { label: 'Secondary School', href: '/academics' },
+    { label: 'Extracurriculars', href: '/academics' },
+  ];
+
   return (
     <footer className="bg-secondary text-secondary-foreground pt-12 sm:pt-16 md:pt-20 pb-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
@@ -8,11 +31,13 @@ export function Footer() {
 
           {/* Brand */}
           <div className="space-y-5 sm:space-y-6 sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 group min-w-0 no-underline">
               <img
                 src="/logo.png"
-                alt="BRDM Public School Logo"
+                alt="BRDM Public School logo — best CBSE school in Kaithal, Haryana"
                 className="w-12 h-12 object-contain shrink-0"
+                width="48"
+                height="48"
               />
               <div className="flex flex-col">
                 <span className="font-serif font-bold text-lg sm:text-xl leading-tight">
@@ -22,16 +47,28 @@ export function Footer() {
                   Kaithal, Haryana
                 </span>
               </div>
-            </div>
+            </Link>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed max-w-xs">
-              Preparing Your Child for better Future... A proud neighborhood school where families trust their children's futures.
+              Preparing Your Child for a Better Future. A proud neighborhood school in Kaithal, Haryana, where families trust their children's education and growth.
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Facebook size={16} />
+              <a
+                href="https://www.facebook.com/brdmpublicschool"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                aria-label="Follow BRDM Public School on Facebook"
+              >
+                <Facebook size={16} aria-hidden="true" />
               </a>
-              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
-                <Instagram size={16} />
+              <a
+                href="https://www.instagram.com/brdmpublicschool"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                aria-label="Follow BRDM Public School on Instagram"
+              >
+                <Instagram size={16} aria-hidden="true" />
               </a>
             </div>
 
@@ -39,9 +76,9 @@ export function Footer() {
             <div className="inline-flex flex-col gap-1 p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10">
               <div className="flex items-center gap-1 text-accent">
                 {[...Array(4)].map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" />
+                  <Star key={i} size={14} fill="currentColor" aria-hidden="true" />
                 ))}
-                <Star size={14} className="fill-current text-white/20" />
+                <Star size={14} className="fill-current text-white/20" aria-hidden="true" />
                 <span className="ml-1.5 text-white font-bold text-base sm:text-lg">4.4</span>
               </div>
               <span className="text-xs text-white/60">Based on 13 votes on Facebook</span>
@@ -50,70 +87,69 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Quick Links</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {[
-                { label: 'About Us',            href: '/about'      },
-                { label: "Principal's Message", href: '/principal'  },
-                { label: 'Our Faculty',         href: '/faculty'    },
-                { label: 'Academics',           href: '/academics'  },
-                { label: 'Academic Calendar',   href: '/calendar'   },
-                { label: 'News & Events',       href: '/news'       },
-                { label: 'Gallery',             href: '/gallery'    },
-                { label: 'Admissions',          href: '/admissions' },
-                { label: 'Contact Us',          href: '/contact'    },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h2 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Quick Links</h2>
+            <nav aria-label="Footer quick links">
+              <ul className="space-y-2 sm:space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-secondary-foreground/70 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           {/* Programs */}
           <div>
-            <h3 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Programs</h3>
-            <ul className="space-y-2 sm:space-y-3">
-              {['Play Group', 'Primary School', 'Middle School', 'Extracurriculars'].map((link) => (
-                <li key={link}>
-                  <a href="/academics" className="text-secondary-foreground/70 hover:text-primary transition-colors text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h2 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Programs</h2>
+            <nav aria-label="Footer programs links">
+              <ul className="space-y-2 sm:space-y-3">
+                {programs.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-secondary-foreground/70 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
             {/* Contact */}
-            <h3 className="font-serif font-semibold text-base sm:text-lg mt-8 mb-4 sm:mb-5">Contact Us</h3>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="flex items-start gap-3 text-sm text-secondary-foreground/80">
-                <MapPin size={16} className="text-primary shrink-0 mt-0.5" />
-                <span>Shora Kothi, Jind Rd,<br />Kaithal, Haryana 136027</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
-                <Phone size={16} className="text-primary shrink-0" />
-                <a href="tel:+7404500023" className="hover:text-white transition-colors">+7404500023</a>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
-                <Mail size={16} className="text-primary shrink-0" />
-                <a href="mailto:admin@brdm.com" className="hover:text-white transition-colors break-all">
-                  admin@brdm.com
-                </a>
-              </li>
-            </ul>
+            <h2 className="font-serif font-semibold text-base sm:text-lg mt-8 mb-4 sm:mb-5">Contact Us</h2>
+            <address className="not-italic">
+              <ul className="space-y-3 sm:space-y-4">
+                <li className="flex items-start gap-3 text-sm text-secondary-foreground/80">
+                  <MapPin size={16} className="text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>Shora Kothi, Jind Rd,<br />Kaithal, Haryana 136027</span>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
+                  <Phone size={16} className="text-primary shrink-0" aria-hidden="true" />
+                  <a href="tel:+917404500023" className="hover:text-white transition-colors">+91 7404500023</a>
+                </li>
+                <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
+                  <Mail size={16} className="text-primary shrink-0" aria-hidden="true" />
+                  <a href="mailto:admin@brdm.com" className="hover:text-white transition-colors break-all">
+                    admin@brdm.com
+                  </a>
+                </li>
+              </ul>
+            </address>
           </div>
 
           {/* Google Maps */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <h3 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Find Us</h3>
+            <h2 className="font-serif font-semibold text-base sm:text-lg mb-4 sm:mb-6">Find Us</h2>
             <div className="rounded-xl overflow-hidden border border-white/10 shadow-sm">
               <iframe
-                title="BRDM Public School Location"
+                title="BRDM Public School location on Google Maps — Shora Kothi, Jind Road, Kaithal, Haryana 136027"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.0!2d76.3998!3d29.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391226e0d7777777%3A0x0!2sShora+Kothi%2C+Jind+Rd%2C+Kaithal%2C+Haryana+136027!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="200"
@@ -129,19 +165,20 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 inline-flex items-center gap-1.5 text-xs text-primary hover:text-white transition-colors"
+              aria-label="Open BRDM Public School location in Google Maps"
             >
-              <MapPin size={12} /> Open in Google Maps
+              <MapPin size={12} aria-hidden="true" /> Open in Google Maps
             </a>
           </div>
 
         </div>
 
         <div className="pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-secondary-foreground/60 text-center sm:text-left pb-8 sm:pb-10">
-          <p>© {new Date().getFullYear()} BRDM Public School. All rights reserved.</p>
-          <div className="flex gap-4 sm:gap-6">
+          <p>&copy; {currentYear} BRDM Public School, Kaithal, Haryana. All rights reserved.</p>
+          <nav aria-label="Footer legal links" className="flex gap-4 sm:gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

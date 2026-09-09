@@ -544,13 +544,13 @@ function AcademicsCTA() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="#"
+              href="/calendar"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="inline-block bg-white/20 border border-white/40 text-white font-bold px-7 py-3.5 rounded-full hover:bg-white/30 transition-colors text-sm sm:text-base"
-              aria-label="Download school prospectus (PDF)"
+              aria-label="View the academic calendar of BRDM Public School"
             >
-              Download Prospectus
+              View Academic Calendar
             </motion.a>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
               <Link

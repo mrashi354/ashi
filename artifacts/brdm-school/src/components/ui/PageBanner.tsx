@@ -2,13 +2,24 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { ChevronRight, Home } from 'lucide-react';
 
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   subtitle?: string;
   breadcrumb?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
-export function PageBanner({ title, subtitle, breadcrumb }: Props) {
+export function PageBanner({ title, subtitle, breadcrumb, breadcrumbs }: Props) {
+  const crumbs = breadcrumbs || [
+    { name: 'Home', href: '/' },
+    { name: breadcrumb || title, href: '#' },
+  ];
+
   return (
     <section className="relative bg-secondary text-white pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden">
       {/* grid pattern */}
@@ -30,19 +41,38 @@ export function PageBanner({ title, subtitle, breadcrumb }: Props) {
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        {/* Breadcrumb */}
-        <motion.div
+        {/* Breadcrumb navigation */}
+        <motion.nav
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-1.5 text-white/60 text-sm mb-4"
+          aria-label="Breadcrumb"
+          className="mb-4"
         >
-          <Link href="/" className="flex items-center gap-1 hover:text-white transition-colors">
-            <Home size={13} /> Home
-          </Link>
-          <ChevronRight size={13} />
-          <span className="text-white/90 font-medium">{breadcrumb ?? title}</span>
-        </motion.div>
+          <ol className="flex items-center gap-1.5 text-sm text-white/60">
+            {crumbs.map((crumb, i) => {
+              const isLast = i === crumbs.length - 1;
+              return (
+                <li key={crumb.name} className="flex items-center gap-1.5">
+                  {i > 0 && <ChevronRight size={13} aria-hidden="true" />}
+                  {isLast ? (
+                    <span className="text-white/90 font-medium" aria-current="page">
+                      {crumb.name}
+                    </span>
+                  ) : (
+                    <Link
+                      href={crumb.href}
+                      className="flex items-center gap-1 hover:text-white transition-colors"
+                    >
+                      {i === 0 && <Home size={13} aria-hidden="true" />}
+                      {crumb.name}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </motion.nav>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

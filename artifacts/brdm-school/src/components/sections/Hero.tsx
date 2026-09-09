@@ -37,9 +37,14 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/95 via-secondary/30 to-transparent z-10" />
         <div className="absolute inset-y-0 left-0 w-[50%] bg-gradient-to-r from-secondary via-secondary/85 to-transparent z-10" />
         <motion.img
-          src="/school-bg.png"
-          alt="BRDM Public School Campus"
+          src="/school-bg.webp"
+          alt="BRDM Public School campus building in Kaithal, Haryana — a modern educational institution with excellent infrastructure"
           className="w-full h-full object-cover object-center"
+          width="1693"
+          height="929"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           animate={{ scale: [1.05, 1.12, 1.05] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
         />

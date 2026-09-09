@@ -47,6 +47,8 @@ export function Navbar() {
           <img
             src="/logo.png"
             alt="BRDM Public School Logo"
+            width="48"
+            height="48"
             className="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 transition-transform group-hover:scale-105"
           />
           <div className="flex flex-col min-w-0">
@@ -64,7 +66,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Primary navigation">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -96,7 +98,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`md:hidden p-2 rounded-md shrink-0 ${isScrolled ? 'text-foreground' : 'text-white'}`}
+          className={`md:hidden p-2.5 rounded-md shrink-0 ${isScrolled ? 'text-foreground' : 'text-white'}`}
           onClick={() => setMobileOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -117,7 +119,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`flex items-center py-2.5 border-b border-border/50 text-base font-medium transition-colors ${
+                className={`flex items-center py-3.5 border-b border-border/50 text-base font-medium transition-colors ${
                   isActive(link.href) ? 'text-primary' : 'text-foreground/80'
                 }`}
               >

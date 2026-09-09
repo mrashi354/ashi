@@ -1,2 +1,10 @@
 User-agent: *
 Allow: /
+
+# Private / API routes — not public pages, don't index
+Disallow: /admin
+Disallow: /api/
+Disallow: /config
+
+# Sitemap reference
+Sitemap: https://brdmpublicschool.in/sitemap.xml

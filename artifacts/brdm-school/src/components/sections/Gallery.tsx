@@ -8,24 +8,36 @@ interface Photo {
   label: string;
   category: string;
   date?: string;
+  w: number;
+  h: number;
 }
 
 const photos: Photo[] = [
   /* Campus Life — real school photos */
-  { src: '/gallery/photo-02.jpg',   label: 'Campus Moment 1',  category: 'Campus Life' },
-  { src: '/gallery/photo-03.jpg',   label: 'Campus Moment 2',  category: 'Campus Life' },
-  { src: '/gallery/photo-04.jpg',   label: 'Campus Moment 3',  category: 'Campus Life' },
-  { src: '/gallery/photo-05.jpg',   label: 'Campus Moment 4',  category: 'Campus Life' },
-  { src: '/gallery/photo-06.jpg',   label: 'Campus Moment 5',  category: 'Campus Life' },
-  { src: '/gallery/photo-07.jpg',   label: 'Campus Moment 6',  category: 'Campus Life' },
-  { src: '/gallery/photo-08.jpg',   label: 'Campus Moment 7',  category: 'Campus Life' },
-  { src: '/gallery/photo-09.jpg',   label: 'Campus Moment 8',  category: 'Campus Life' },
-  { src: '/gallery/photo-10.jpg',   label: 'Campus Moment 9',  category: 'Campus Life' },
-  { src: '/gallery/photo-11.jpg',   label: 'Campus Moment 10',  category: 'Campus Life' },
-  { src: '/gallery/photo-12.jpg',   label: 'Campus Moment 11',  category: 'Campus Life' },
+  { src: '/gallery/school-building.webp',     label: 'BRDM Public School main building in Kaithal',  category: 'Campus Life', date: '2026', w: 1200, h: 659 },
+  { src: '/gallery/school-front.webp',        label: 'Front entrance of BRDM Public School Kaithal', category: 'Campus Life', date: '2026', w: 341, h: 318 },
+  { src: '/gallery/photo-02.webp',   label: 'Students at BRDM Public School in classroom',  category: 'Campus Life', w: 960, h: 421 },
+  { src: '/gallery/photo-03.webp',   label: 'BRDM students participating in school activities',  category: 'Campus Life', w: 320, h: 140 },
+  { src: '/gallery/photo-04.jpg',   label: 'BRDM Public School learning environment',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-05.jpg',   label: 'Students during break at BRDM school campus',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-06.jpg',   label: 'BRDM students in group discussion',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-07.jpg',   label: 'Teachers guiding students at BRDM Public School',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-08.jpg',   label: 'BRDM school campus grounds',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-09.jpg',   label: 'Students at BRDM Public School celebrating',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-10.jpg',   label: 'BRDM school cultural event',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-11.jpg',   label: 'Students enjoying at BRDM Public School Kaithal',  category: 'Campus Life', w: 160, h: 160 },
+  { src: '/gallery/photo-12.jpg',   label: 'BRDM Public School annual function',  category: 'Campus Life', w: 160, h: 160 },
+
+  /* Classrooms */
+  { src: '/gallery/classroom-learning.webp', label: 'Modern smart classroom at BRDM Public School Kaithal', category: 'Classrooms', date: '2026', w: 800, h: 800 },
+
+  /* Facilities */
+  { src: '/gallery/school-library.webp', label: 'Modern library at BRDM Public School Kaithal with study resources', category: 'Facilities', date: '2026', w: 800, h: 800 },
+  { src: '/gallery/school-play.webp',    label: 'Playground and sports facilities at BRDM Public School Kaithal',    category: 'Facilities', date: '2026', w: 800, h: 800 },
+  { src: '/gallery/hero-school.webp',    label: 'BRDM Public School Kaithal campus overview', category: 'Facilities', date: '2026', w: 800, h: 800 },
 ];
 
-const CATEGORIES = ['All', 'Campus Life'];
+const CATEGORIES = ['All', 'Campus Life', 'Classrooms', 'Facilities'];
 const PAGE_SIZE = 9;
 
 /* ─── Lightbox ───────────────────────────────────────────────────────────── */
@@ -173,16 +185,19 @@ export function Gallery() {
               transition={{ delay: 0.05 }}
               className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
             >
-              Photo Gallery
+              Photo Gallery of BRDM Public School Kaithal
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto"
+              className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto"
             >
-              A glimpse into everyday life at BRDM — vibrant, joyful, and full of energy.
+              A glimpse into everyday life at BRDM Public School, Kaithal — vibrant, joyful, and full of energy.
+              From modern smart classrooms and our well-stocked library to the playground, sports facilities,
+              cultural celebrations, and annual events, these photos capture the spirit of learning and the
+              warmth of our school community in Haryana.
             </motion.p>
           </div>
 
@@ -229,7 +244,10 @@ export function Gallery() {
                   <img
                     src={photo.src}
                     alt={photo.label}
+                    width={photo.w}
+                    height={photo.h}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-auto block object-cover"
                   />
 
