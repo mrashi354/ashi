@@ -10,6 +10,7 @@ export const schoolJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   image: `${SITE_URL}/school-bg.webp`,
+  foundingDate: '2008',
   telephone: '+91-7404500023',
   email: 'admin@brdm.com',
   address: {

@@ -360,7 +360,7 @@ export function Gallery() {
             </div>
             <div className="flex gap-4 shrink-0">
               <motion.a
-                href="https://instagram.com"
+                href="https://www.instagram.com/brdmpublicschool"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -372,7 +372,7 @@ export function Gallery() {
                 Instagram
               </motion.a>
               <motion.a
-                href="https://facebook.com"
+                href="https://www.facebook.com/brdmpublicschool"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
