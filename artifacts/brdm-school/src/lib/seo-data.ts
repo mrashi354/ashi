@@ -213,6 +213,14 @@ export function pageJsonLd(page: string, breadcrumbItems: { name: string; url: s
               text: 'Students enjoy daily sports periods, yoga and physical education, art & craft, music, computer lab sessions, and weekly library periods. We also organise annual sports day, science exhibitions, debates, and cultural functions.',
             },
           },
+          {
+            '@type': 'Question',
+            name: 'What are the school timings?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'School runs from 8:00 AM to 2:30 PM, Monday to Saturday. The school office is open from 8:00 AM to 4:00 PM on weekdays for admissions, fee queries, and other assistance.',
+            },
+          },
         ],
       },
     ],
@@ -304,6 +312,14 @@ export function pageJsonLd(page: string, breadcrumbItems: { name: string; url: s
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Yes, BRDM Public School provides school bus service covering major routes in and around Kaithal. Contact the school office for route details, pick-up points, and transport fees.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'What are the school timings?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'School runs from 8:00 AM to 2:30 PM, Monday to Saturday. The school office is open from 8:00 AM to 4:00 PM on weekdays for admissions, fee queries, and other assistance.',
             },
           },
           {

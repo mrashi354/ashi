@@ -64,6 +64,10 @@ export const admissionsFaqs: FaqItem[] = [
     a: 'Yes, BRDM Public School provides school bus service covering major routes in and around Kaithal. Contact the school office for route details, pick-up points, and transport fees.',
   },
   {
+    q: 'What are the school timings?',
+    a: 'School runs from 8:00 AM to 2:30 PM, Monday to Saturday. The school office is open from 8:00 AM to 4:00 PM on weekdays for admission enquiries, fee queries, and any other assistance.',
+  },
+  {
     q: 'Is there an entrance test for admission?',
     a: 'No formal written entrance test is required. Admission is based on a brief informal interaction and, for higher classes, a review of the previous report card to place your child in the right grade.',
   },
@@ -97,6 +101,10 @@ export const academicsFaqs: FaqItem[] = [
   {
     q: 'What extracurricular activities are available?',
     a: 'Students enjoy daily sports periods, yoga and physical education, art & craft, music, computer lab sessions, and weekly library periods. We also organise annual sports day, science exhibitions, debates, and cultural functions.',
+  },
+  {
+    q: 'What are the school timings?',
+    a: 'School runs from 8:00 AM to 2:30 PM, Monday to Saturday. The school office is open from 8:00 AM to 4:00 PM on weekdays for admissions, fee queries, and other assistance.',
   },
 ];
 
