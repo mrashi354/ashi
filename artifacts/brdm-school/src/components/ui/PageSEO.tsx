@@ -22,31 +22,31 @@ const seoConfigs: Record<string, PageSEOConfig> = {
   '/about': {
     title: 'About BRDM Public School Kaithal | Our History, Mission & Values',
     description:
-      'Discover BRDM Public School Kaithal — our mission, vision, core values, infrastructure, and 15+ years of educational excellence in Haryana. Learn about our journey.',
+      'Discover BRDM Public School, Kaithal — one of the best CBSE schools in Haryana. Our mission, vision, core values, infrastructure, school curriculum, and 15+ years of educational excellence.',
     keywords:
-      'about BRDM Public School, school history Kaithal, school mission vision, education values Haryana, school infrastructure Kaithal',
+      'about BRDM Public School, best school in Kaithal, CBSE school Haryana, school history, school mission, school vision, education values Haryana',
     breadcrumb: [
       { name: 'Home', url: '/' },
       { name: 'About', url: '/about' },
     ],
   },
   '/academics': {
-    title: 'Academics | BRDM Public School Kaithal, Haryana',
+    title: 'Academics at BRDM Public School Kaithal | Curriculum & Teaching',
     description:
-      'Explore academics at BRDM Public School Kaithal — Play Group to Class 10 curriculum, smart classrooms, science labs, qualified faculty, and holistic teaching approach.',
+      'Explore academics at BRDM Public School Kaithal — CBSE curriculum from Play Group to Class 10, smart classrooms, science labs, qualified faculty, subjects, assessments, and teaching methodology.',
     keywords:
-      'BRDM academics, school curriculum Kaithal, CBSE syllabus, Play Group Class 10 education, smart classrooms Kaithal, school subjects',
+      'BRDM academics, school curriculum Kaithal, CBSE syllabus, subjects Play Group Class 10, teaching methodology Kaithal, school fees, smart classrooms',
     breadcrumb: [
       { name: 'Home', url: '/' },
       { name: 'Academics', url: '/academics' },
     ],
   },
   '/gallery': {
-    title: 'Photo & Video Gallery | BRDM Public School Kaithal Campus Life',
+    title: 'School Photo Gallery | BRDM Public School Kaithal Campus Photos',
     description:
-      'Browse photos and videos of campus life at BRDM Public School Kaithal — classrooms, playground, library, events, sports day, and annual celebrations.',
+      'Browse the BRDM Public School gallery — real campus photos from our CBSE school in Kaithal. Classrooms, library, playground, events, sports day, and celebrations.',
     keywords:
-      'BRDM school gallery, school photos Kaithal, campus life pictures, school events photos, BRDM school videos',
+      'BRDM school gallery, school photos Kaithal, campus life pictures, CBSE school photos, school events photos, classroom pictures',
     breadcrumb: [
       { name: 'Home', url: '/' },
       { name: 'Gallery', url: '/gallery' },

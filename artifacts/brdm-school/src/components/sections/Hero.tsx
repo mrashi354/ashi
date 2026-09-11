@@ -134,8 +134,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
           className="text-sm sm:text-base md:text-lg lg:text-xl text-white/95 max-w-xs sm:max-w-lg md:max-w-2xl font-medium leading-relaxed mb-7 sm:mb-10 drop-shadow-lg"
         >
-          A proud neighborhood school in Kaithal, Haryana — shaping bright futures and nurturing
-          every child to reach their full potential.
+          A proud neighbourhood CBSE school in Kaithal, Haryana — trusted for quality education
+          from Play Group to Class 10, with caring teachers, modern classrooms, and admissions open for 2026–27.
         </motion.p>
 
         {/* Feature chips — staggered + hover lift */}
