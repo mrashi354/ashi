@@ -105,14 +105,14 @@ export function CampusLife() {
             aria-label="View the full photo gallery of BRDM Public School Kaithal"
             className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-full hover:bg-muted transition-colors font-medium text-foreground whitespace-nowrap self-start md:self-auto"
           >
-            Explore Our Photo Gallery
+            View BRDM School Photo Gallery
           </motion.a>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
           <GalleryCard
-            src="/gallery/photo-02.webp"
+            src="/gallery/students-in-classroom.webp"
             alt="Students at BRDM Public School Kaithal enjoying campus life and learning activities"
             label="Students Learning Together"
             className="md:col-span-8 h-64 sm:h-80 md:h-[360px]"
@@ -120,7 +120,7 @@ export function CampusLife() {
             objectPos="object-center"
           />
           <GalleryCard
-            src="/gallery/photo-04.jpg"
+            src="/gallery/learning-environment.webp"
             alt="BRDM Public School Kaithal classroom learning environment with students and teachers"
             label="Classroom Activities"
             className="md:col-span-4 h-64 sm:h-80 md:h-[360px]"
@@ -136,7 +136,7 @@ export function CampusLife() {
             className="md:col-span-12 rounded-3xl overflow-hidden relative group bg-[#0a1a4a]"
           >
             <motion.img
-              src="/gallery/photo-03.webp"
+              src="/gallery/students-school-activities.webp"
               alt="BRDM Public School Kaithal events and celebrations with students participating"
               width="320"
               height="140"

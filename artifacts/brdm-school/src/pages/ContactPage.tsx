@@ -23,7 +23,7 @@ export function ContactPage() {
         title="Explore More About BRDM Public School Kaithal"
         links={[
           {
-            label: 'Learn About Our Academics',
+            label: 'Explore Academics at BRDM',
             href: '/academics',
             description:
               'Discover our curriculum, smart classrooms, science labs, and teaching approach.',

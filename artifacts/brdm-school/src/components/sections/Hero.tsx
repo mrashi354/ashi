@@ -188,7 +188,7 @@ export function Hero() {
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             className="px-6 sm:px-9 py-3.5 sm:py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold text-base sm:text-lg flex items-center justify-center cursor-pointer"
           >
-            Discover Our School
+            Discover BRDM Public School
           </motion.button>
         </motion.div>
       </div>

@@ -36,13 +36,13 @@ export function AdmissionsPage() {
         title="Ready to Know More?"
         links={[
           {
-            label: 'Explore Our Academics',
+            label: 'Explore CBSE Academics at BRDM',
             href: '/academics',
             description:
               'Understand our curriculum from Play Group to Class 10 and our teaching methodology.',
           },
           {
-            label: 'Discover Campus Life',
+            label: 'View Campus Life & Facilities',
             href: '/gallery',
             description:
               'See classrooms, facilities, events, and everyday moments at BRDM in our photo gallery.',

@@ -25,7 +25,7 @@ export function GalleryPage() {
         title="Keep Exploring BRDM Public School Kaithal"
         links={[
           {
-            label: 'Explore Our Academics',
+            label: 'Explore Academics at BRDM',
             href: '/academics',
             description:
               'Learn about our curriculum, teaching methodology, and programs from Play Group to Class 10.',
