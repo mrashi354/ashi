@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
@@ -8,30 +8,35 @@ const testimonials = [
     relation: 'Parent of Class 5 Student',
     text: 'BRDM Public School has been a wonderful choice for our daughter. The teachers are caring and highly dedicated. She has grown so much in confidence and academics since joining.',
     initials: 'SS',
+    rating: 5,
   },
   {
     name: 'Rajesh Kumar',
     relation: 'Parent of Class 8 Student',
     text: 'The school provides a great balance of academics and extracurricular activities. My son looks forward to school every day. The staff is approachable and always there to help.',
     initials: 'RK',
+    rating: 5,
   },
   {
     name: 'Priya Devi',
     relation: 'Parent of Class 3 Student',
     text: 'We are extremely happy with the learning environment at BRDM. The school truly lives up to its motto of preparing children for a better future. Highly recommended!',
     initials: 'PD',
+    rating: 4,
   },
   {
     name: 'Anil Verma',
     relation: 'Parent of Class 10 Student',
     text: 'Excellent faculty and infrastructure. The school\'s focus on individual attention and overall development sets it apart. My child\'s board exam results have been outstanding.',
     initials: 'AV',
+    rating: 5,
   },
   {
     name: 'Meena Rani',
     relation: 'Parent of Class 1 Student',
     text: 'From the very first day, our child felt welcome and safe. The teachers are patient, kind, and very skilled at making learning fun for young children.',
     initials: 'MR',
+    rating: 5,
   },
 ];
 
@@ -92,9 +97,19 @@ export function Testimonials() {
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
                 className="w-full"
               >
-                <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-8 italic">
+                <p className="text-foreground/80 text-base sm:text-lg leading-relaxed mb-4 italic">
                   "{testimonials[current].text}"
                 </p>
+                <div className="flex gap-1 mb-6" aria-label={`Rated ${testimonials[current].rating} out of 5`}>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-4 h-4 ${
+                        i < testimonials[current].rating ? 'fill-amber-400 text-amber-400' : 'text-border'
+                      }`}
+                    />
+                  ))}
+                </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg shrink-0">
                     {testimonials[current].initials}

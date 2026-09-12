@@ -153,6 +153,204 @@ export const homePageJsonLd = [
       },
     ],
   },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'School',
+    '@id': SITE_URL,
+    name: 'BRDM Public School',
+    url: SITE_URL,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      bestRating: '5',
+      worstRating: '1',
+      ratingCount: '5',
+      reviewCount: '5',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Sunita Sharma' },
+        datePublished: '2026-01-10',
+        reviewBody:
+          'BRDM Public School has been a wonderful choice for our daughter. The teachers are caring and highly dedicated. She has grown so much in confidence and academics since joining.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Rajesh Kumar' },
+        datePublished: '2026-02-05',
+        reviewBody:
+          'The school provides a great balance of academics and extracurricular activities. My son looks forward to school every day. The staff is approachable and always there to help.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Priya Devi' },
+        datePublished: '2026-03-02',
+        reviewBody:
+          'We are extremely happy with the learning environment at BRDM. The school truly lives up to its motto of preparing children for a better future. Highly recommended!',
+        reviewRating: { '@type': 'Rating', ratingValue: '4', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Anil Verma' },
+        datePublished: '2026-04-18',
+        reviewBody:
+          "Excellent faculty and infrastructure. The school's focus on individual attention and overall development sets it apart. My child's board exam results have been outstanding.",
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Meena Rani' },
+        datePublished: '2026-05-22',
+        reviewBody:
+          'From the very first day, our child felt welcome and safe. The teachers are patient, kind, and very skilled at making learning fun for young children.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+    ],
+  },
+];
+
+export const academicCoursesSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'CBSE Curriculum for Play Group',
+    description:
+      'Early childhood programme at BRDM Public School, Kaithal covering sensory play, motor skills practice, and guided social interaction for children aged 2½–3 years.',
+    courseCode: 'Play Group',
+    courseMode: 'Onsite',
+    educationalLevel: 'Preschool',
+    provider: { '@type': 'School', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/academics`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Nursery and Kindergarten Curriculum',
+    description:
+      'Pre-literacy, numeracy foundations, creativity, and confidence building through activity-based learning for children aged 3–6 years at BRDM Public School, Kaithal.',
+    courseCode: 'Nursery-KG',
+    courseMode: 'Onsite',
+    educationalLevel: 'Preschool',
+    provider: { '@type': 'School', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/academics`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Primary School Curriculum (Classes 1–5)',
+    description:
+      'Core CBSE subjects at BRDM Public School, Kaithal including English, Hindi, Mathematics, EVS, Computer, Art & Craft, and General Knowledge with continuous assessment.',
+    courseCode: 'Class 1-5',
+    courseMode: 'Onsite',
+    educationalLevel: 'Primary',
+    provider: { '@type': 'School', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/academics`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Middle School Curriculum (Classes 6–8)',
+    description:
+      'In-depth study of Science, Social Science, Mathematics, Computer Science, languages, and Physical Education at BRDM Public School, Kaithal with project-based learning.',
+    courseCode: 'Class 6-8',
+    courseMode: 'Onsite',
+    educationalLevel: 'Middle School',
+    provider: { '@type': 'School', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/academics`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Secondary School Programme (Classes 9–10)',
+    description:
+      'Board-oriented CBSE programme at BRDM Public School, Kaithal for Classes 9–10 focusing on Science, Mathematics, Social Science, languages, and career guidance with regular assessments.',
+    courseCode: 'Class 9-10',
+    courseMode: 'Onsite',
+    educationalLevel: 'Secondary',
+    provider: { '@type': 'School', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/academics`,
+  },
+];
+
+export const eventsSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Annual Sports Day',
+    description:
+      'BRDM Public School Annual Sports Day — students showcase athletics, races, and sports drills. Parents are warmly invited to attend.',
+    startDate: '2026-08-10T09:00:00+05:30',
+    endDate: '2026-08-10T13:00:00+05:30',
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: 'BRDM Public School Ground',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shora Kothi, Jind Road',
+        addressLocality: 'Kaithal',
+        addressRegion: 'Haryana',
+        postalCode: '136027',
+        addressCountry: 'IN',
+      },
+    },
+    organizer: { '@type': 'Organization', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/news`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Independence Day Celebration',
+    description:
+      'Flag hoisting ceremony and cultural programme at BRDM Public School celebrating Independence Day. All students, parents, and staff are invited.',
+    startDate: '2026-08-15T08:00:00+05:30',
+    endDate: '2026-08-15T09:30:00+05:30',
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: 'BRDM Public School Ground',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shora Kothi, Jind Road',
+        addressLocality: 'Kaithal',
+        addressRegion: 'Haryana',
+        postalCode: '136027',
+        addressCountry: 'IN',
+      },
+    },
+    organizer: { '@type': 'Organization', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/news`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Science Exhibition 2026',
+    description:
+      'Annual Science Exhibition at BRDM Public School for students of Classes 6–10 to showcase science models, experiments, and innovations.',
+    startDate: '2026-09-25T10:00:00+05:30',
+    endDate: '2026-09-25T14:00:00+05:30',
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: 'BRDM Public School Ground',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shora Kothi, Jind Road',
+        addressLocality: 'Kaithal',
+        addressRegion: 'Haryana',
+        postalCode: '136027',
+        addressCountry: 'IN',
+      },
+    },
+    organizer: { '@type': 'Organization', name: 'BRDM Public School', url: SITE_URL },
+    url: `${SITE_URL}/news`,
+  },
 ];
 
 export function pageJsonLd(page: string, breadcrumbItems: { name: string; url: string }[]) {
@@ -223,6 +421,7 @@ export function pageJsonLd(page: string, breadcrumbItems: { name: string; url: s
           },
         ],
       },
+      ...academicCoursesSchema,
     ],
     gallery: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)],
     contact: [
@@ -344,7 +543,7 @@ export function pageJsonLd(page: string, breadcrumbItems: { name: string; url: s
     principal: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)],
     faculty: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)],
     calendar: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)],
-    news: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)],
+    news: [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems), ...eventsSchema],
   };
 
   return schemas[page] || [schoolJsonLd, breadcrumbJsonLd(breadcrumbItems)];
