@@ -141,8 +141,8 @@ export function Admissions() {
                 >
                   <div className="flex flex-col items-center">
                     <motion.div
-                      whileHover={{ scale: 1.15, backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)' }}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-primary bg-white/5 transition-colors duration-300 shrink-0"
+                      whileHover={{ scale: 1.15 }}
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-primary bg-white/5 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary shrink-0"
                     >
                       <step.icon size={18} />
                     </motion.div>
