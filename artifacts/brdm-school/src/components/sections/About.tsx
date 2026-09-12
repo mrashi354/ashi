@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import {
   BookOpen, Users, Sun, Target, Shield, Lightbulb, Heart, Star, Zap,
   Monitor, Bus, FlaskConical, TreePine, Award, CheckCircle2,
+  Building2, Dumbbell, TrendingUp,
 } from 'lucide-react';
 import { useCountUp } from '@/hooks/useCountUp';
 
@@ -221,60 +222,109 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 2. SCHOOL HISTORY / JOURNEY TIMELINE        */}
+      {/* 2. SCHOOL HISTORY / MILESTONE JOURNEY       */}
       {/* ─────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-muted/40">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+      <section className="py-16 sm:py-20 bg-muted/40 relative overflow-hidden">
+        <motion.div
+          className="absolute top-20 -left-24 w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          aria-hidden="true"
+        />
+        <motion.div
+          className="absolute -bottom-16 -right-20 w-80 h-80 rounded-full bg-accent/5 blur-3xl pointer-events-none"
+          animate={{ scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <SectionHeader
             eyebrow="Our Story"
             title="The BRDM Journey"
             subtitle="From humble beginnings to a thriving centre of learning — a legacy built milestone by milestone."
           />
 
-          <div className="relative max-w-3xl mx-auto">
-            {/* vertical line */}
-            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden sm:block" aria-hidden="true" />
+          <div className="relative max-w-4xl mx-auto">
+            {/* connecting line */}
+            <div
+              className="absolute left-5 sm:left-1/2 top-2 bottom-2 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-primary via-accent to-secondary/40"
+              aria-hidden="true"
+            />
 
             {[
-              { year: '2008', title: 'School Founded', desc: 'BRDM Public School opened its doors in Kaithal, Haryana, with a vision to provide quality education to every child in the community.' },
-              { year: '2011', title: 'First Board Results', desc: 'Our inaugural batch appeared in board examinations with outstanding results, establishing BRDM as a trusted name in academics.' },
-              { year: '2015', title: 'Infrastructure Expansion', desc: 'New science labs, a computer centre, and a modern library were inaugurated, dramatically upgrading the learning environment.' },
-              { year: '2018', title: 'Smart Classrooms Introduced', desc: 'Digital smart boards were installed in every classroom, blending technology with traditional teaching for 21st-century learning.' },
-              { year: '2022', title: 'Sports & Cultural Centre', desc: 'A dedicated sports ground and cultural activity hall were added, supporting holistic student development beyond academics.' },
-              { year: '2024', title: 'Serving 1000+ Families', desc: 'BRDM now proudly serves over a thousand families across Kaithal, recognised for academic excellence and nurturing values.' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.year}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className={`relative flex flex-col sm:flex-row gap-4 sm:gap-8 mb-10 last:mb-0 ${
-                  i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
-                }`}
-              >
-                {/* Year bubble */}
-                <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-primary text-primary-foreground font-bold text-sm items-center justify-center shadow-lg z-10 shrink-0">
-                  {item.year}
-                </div>
-
-                {/* Card */}
-                <div className={`sm:w-[calc(50%-3rem)] ${i % 2 === 0 ? 'sm:mr-auto sm:text-right' : 'sm:ml-auto'}`}>
-                  {/* Mobile year label */}
-                  <div className="sm:hidden inline-block mb-2 px-3 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-bold">
-                    {item.year}
-                  </div>
+              { year: '2008', milestone: 'Foundation', icon: Building2, title: 'School Founded', desc: 'BRDM Public School opened its doors in Kaithal, Haryana, with a vision to provide quality education to every child in the community.', chip: 'bg-primary/10 text-primary border-primary/20' },
+              { year: '2011', milestone: 'First Results', icon: Award, title: 'First Board Results', desc: 'Our inaugural batch appeared in board examinations with outstanding results, establishing BRDM as a trusted name in academics.', chip: 'bg-secondary/10 text-secondary border-secondary/20' },
+              { year: '2015', milestone: 'Campus Growth', icon: FlaskConical, title: 'Infrastructure Expansion', desc: 'New science labs, a computer centre, and a modern library were inaugurated, dramatically upgrading the learning environment.', chip: 'bg-accent/10 text-accent-foreground border-accent/30' },
+              { year: '2018', milestone: 'Smart Learning', icon: Monitor, title: 'Smart Classrooms Introduced', desc: 'Digital smart boards were installed in every classroom, blending technology with traditional teaching for 21st-century learning.', chip: 'bg-primary/10 text-primary border-primary/20' },
+              { year: '2022', milestone: 'Sports & Culture', icon: Dumbbell, title: 'Sports & Cultural Centre', desc: 'A dedicated sports ground and cultural activity hall were added, supporting holistic student development beyond academics.', chip: 'bg-secondary/10 text-secondary border-secondary/20' },
+              { year: '2024', milestone: 'Growing Strong', icon: TrendingUp, title: 'Serving 1000+ Families', desc: 'BRDM now proudly serves over a thousand families across Kaithal, recognised for academic excellence and nurturing values.', chip: 'bg-accent/10 text-accent-foreground border-accent/30' },
+            ].map((item, i) => {
+              const left = i % 2 === 0;
+              const Icon = item.icon;
+              const isToday = i === 5;
+              return (
+                <motion.div
+                  key={item.year}
+                  custom={i}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: '-60px' }}
+                  className="relative flex flex-col gap-3 sm:gap-0 mb-8 sm:mb-12 last:mb-0"
+                >
+                  {/* Icon marker on the line */}
                   <motion.div
-                    whileHover={{ y: -3 }}
-                    className="bg-card border border-border rounded-2xl p-5 shadow-sm"
+                    whileHover={{ scale: 1.15, rotate: 4 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+                    className={`absolute left-5 sm:left-1/2 -translate-x-1/2 top-1 z-10 w-12 h-12 rounded-2xl rotate-45 bg-gradient-to-br ${
+                      isToday ? 'from-accent to-primary shadow-accent/40' : 'from-primary to-accent'
+                    } shadow-lg shadow-primary/25 flex items-center justify-center`}
                   >
-                    <h3 className="font-bold text-foreground mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <Icon className="w-5 h-5 text-white -rotate-45" aria-hidden="true" />
                   </motion.div>
-                </div>
-              </motion.div>
-            ))}
+
+                  {/* Card */}
+                  <div className={`w-full pl-16 sm:pl-0 sm:w-[calc(50%-3.5rem)] ${left ? 'sm:mr-auto sm:text-left' : 'sm:ml-auto'}`}>
+                    <motion.div
+                      whileHover={{ y: -4, boxShadow: '0 20px 40px -12px rgba(13,75,111,0.18)' }}
+                      className={`relative bg-card border rounded-2xl p-5 sm:p-6 shadow-sm transition-colors overflow-hidden ${
+                        isToday
+                          ? 'border-primary/30 ring-1 ring-primary/20 bg-gradient-to-br from-primary/[0.06] to-accent/[0.08]'
+                          : 'border-border hover:border-primary/25'
+                      }`}
+                    >
+                      {/* step watermark */}
+                      <span
+                        className="absolute -top-2 right-3 font-serif text-5xl sm:text-6xl font-bold text-primary/[0.06] select-none pointer-events-none"
+                        aria-hidden="true"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+
+                      <div className="flex flex-wrap items-center gap-2 mb-2 relative">
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider ${item.chip}`}>
+                          {item.milestone}
+                        </span>
+                        <span className="text-xs font-semibold text-muted-foreground">
+                          {item.year}
+                        </span>
+                      </div>
+
+                      <h3 className={`font-bold mb-1.5 relative ${isToday ? 'text-primary' : 'text-foreground'}`}>
+                        {item.title}
+                        {isToday && (
+                          <span className="ml-2 align-middle text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-primary text-primary-foreground">
+                            Today
+                          </span>
+                        )}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed relative">{item.desc}</p>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
