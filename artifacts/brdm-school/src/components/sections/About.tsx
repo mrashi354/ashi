@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import {
   BookOpen, Users, Sun, Target, Shield, Lightbulb, Heart, Star, Zap,
-  Monitor, Bus, FlaskConical, TreePine, Quote, Award, CheckCircle2,
+  Monitor, Bus, FlaskConical, TreePine, Award, CheckCircle2,
 } from 'lucide-react';
 import { useCountUp } from '@/hooks/useCountUp';
 
@@ -280,64 +280,7 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 3. PRINCIPAL'S MESSAGE                      */}
-      {/* ─────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <SectionHeader
-            eyebrow="Leadership"
-            title="Principal's Message"
-            subtitle="A word from the heart of our school."
-          />
-
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-card border border-border rounded-3xl shadow-lg p-8 sm:p-10 md:p-12 relative overflow-hidden"
-            >
-              {/* decorative quote */}
-              <Quote className="absolute top-6 right-8 text-primary/8 w-24 h-24" aria-hidden="true" />
-
-              <div className="flex flex-col sm:flex-row gap-8 items-start">
-                {/* Avatar */}
-                <div className="shrink-0 flex flex-col items-center gap-3">
-                  <div
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-secondary/10 border-4 border-primary/20 flex items-center justify-center text-secondary font-serif text-4xl font-bold select-none"
-                    aria-label="Principal's photo placeholder"
-                  >
-                    P
-                  </div>
-                  <div className="text-center">
-                    <p className="font-bold text-foreground text-sm">Mr. / Mrs. [Principal Name]</p>
-                    <p className="text-xs text-muted-foreground">Principal, BRDM Public School</p>
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div className="space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
-                  <p>
-                    Dear Students, Parents, and Well-wishers, it gives me immense pride and joy to welcome you to BRDM Public School — a place where young minds are nurtured with care, compassion, and a deep commitment to excellence. Since our founding, we have strived to build an institution that goes far beyond academics, one that shapes character and instils lifelong values.
-                  </p>
-                  <p>
-                    At BRDM, we believe every child is unique, talented, and capable of achieving greatness. Our dedicated faculty works tirelessly to create a stimulating and inclusive environment where curiosity is celebrated, creativity is encouraged, and every student feels seen and heard. We blend modern teaching methods with timeless human values to prepare our students for the challenges of tomorrow.
-                  </p>
-                  <p>
-                    We consider parents our most important partners. Your trust in us is not taken lightly. Together, through open communication and shared goals, we ensure that each child receives the guidance, support, and opportunities they deserve to grow into confident, responsible, and compassionate individuals.
-                  </p>
-                  <p className="italic text-foreground/70">
-                    "Education is not the filling of a bucket, but the lighting of a fire." Let us keep that fire burning brightly in every child at BRDM Public School.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────── */}
-      {/* 4. VISION & MISSION                         */}
+      {/* 3. VISION & MISSION                         */}
       {/* ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-secondary text-white relative overflow-hidden">
         <motion.div
@@ -391,7 +334,7 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 5. CORE VALUES                              */}
+      {/* 4. CORE VALUES                              */}
       {/* ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-muted/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
@@ -432,7 +375,7 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 6. INFRASTRUCTURE & FACILITIES              */}
+      {/* 5. INFRASTRUCTURE & FACILITIES              */}
       {/* ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
@@ -477,7 +420,7 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 7. AFFILIATION & RECOGNITION                */}
+      {/* 6. AFFILIATION & RECOGNITION                */}
       {/* ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-muted/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
@@ -529,72 +472,7 @@ export function About() {
       </section>
 
       {/* ─────────────────────────────────────────── */}
-      {/* 8. PARENT TESTIMONIALS                      */}
-      {/* ─────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-          <SectionHeader
-            eyebrow="What Parents Say"
-            title="Voices of Our Community"
-            subtitle="Hear from the families who trust BRDM Public School with their children's brightest years."
-          />
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {[
-              {
-                initials: 'SS',
-                name: 'Sunita Sharma',
-                relation: 'Parent of Class 5 Student',
-                quote: 'BRDM has been a wonderful choice for our daughter. The teachers are caring and deeply dedicated. She has grown so much in confidence and academic ability since joining.',
-                color: 'bg-primary',
-              },
-              {
-                initials: 'RK',
-                name: 'Rajesh Kumar',
-                relation: 'Parent of Class 8 Student',
-                quote: 'The school provides a great balance of academics and extracurricular activities. My son looks forward to school every day. The staff is approachable and always ready to help.',
-                color: 'bg-secondary',
-              },
-              {
-                initials: 'PD',
-                name: 'Priya Devi',
-                relation: 'Parent of Class 3 Student',
-                quote: 'We are extremely happy with the learning environment at BRDM. The school truly lives up to its motto of preparing children for a better future. Highly recommended!',
-                color: 'bg-accent',
-              },
-            ].map(({ initials, name, relation, quote, color }, i) => (
-              <motion.div
-                key={name}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-                className="bg-card border border-border rounded-3xl p-7 shadow-sm relative overflow-hidden"
-              >
-                <Quote className="absolute top-5 right-5 text-primary/8 w-14 h-14" aria-hidden="true" />
-                <p className="text-muted-foreground text-sm leading-relaxed italic mb-6">"{quote}"</p>
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`w-11 h-11 rounded-full ${color} text-white font-bold text-sm flex items-center justify-center shrink-0`}
-                    aria-label={`${name}'s initials avatar`}
-                  >
-                    {initials}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm">{name}</p>
-                    <p className="text-xs text-muted-foreground">{relation}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────── */}
-      {/* 9. CALL-TO-ACTION BANNER                    */}
+      {/* 7. CALL-TO-ACTION BANNER                    */}
       {/* ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-primary relative overflow-hidden">
         <motion.div
