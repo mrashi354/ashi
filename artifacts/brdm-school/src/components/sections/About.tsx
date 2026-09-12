@@ -306,9 +306,6 @@ export function About() {
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-bold uppercase tracking-wider ${item.chip}`}>
                           {item.milestone}
                         </span>
-                        <span className="text-xs font-semibold text-muted-foreground">
-                          {item.year}
-                        </span>
                       </div>
 
                       <h3 className={`font-bold mb-1.5 relative ${isToday ? 'text-primary' : 'text-foreground'}`}>
